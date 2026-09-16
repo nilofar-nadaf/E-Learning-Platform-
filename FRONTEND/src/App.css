@@ -1,0 +1,3166 @@
+
+
+/* CSS for login.jsx */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+}
+
+.login-box {
+    width: 350px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-box h1 {
+    text-align: center;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-box label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.success {
+    color: green;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+
+
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home-container {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  padding-bottom: 50px;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.home-container nav {
+  height: 70px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  gap: 35px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Student Portal Logo */
+.home-container nav span:first-child {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-right: auto;
+}
+
+/* Navbar Links */
+.home-container nav span:not(:first-child) {
+  color: #374151;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.home-container nav span:not(:first-child):hover {
+  color: #2563eb;
+}
+
+/* Login Button */
+.home-container nav button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home-container nav button:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.home-title {
+  text-align: center;
+  color: #1f2937;
+  font-size: 32px;
+  margin-top: 45px;
+  margin-bottom: 35px;
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.error {
+  text-align: center;
+  color: #dc2626;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   COURSE GRID
+========================= */
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+
+/* =========================
+   COURSE CARD
+========================= */
+
+.course-card {
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Course Name */
+
+.course-card h3 {
+  color: #2563eb;
+  font-size: 22px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+
+/* Course Date */
+
+.course-card p {
+  color: #555555;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+
+/* View More Button */
+
+.course-card button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.course-card button:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+  .home-container nav {
+    height: auto;
+    min-height: 70px;
+    padding: 15px 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .home-container nav span:first-child {
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .home-container nav span:not(:first-child) {
+    font-size: 14px;
+  }
+
+  .home-container nav button {
+    padding: 8px 16px;
+  }
+
+  .home-title {
+    font-size: 27px;
+    margin-top: 35px;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+}
+/* =========================
+   PROFILE
+========================= */
+
+.profile-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Profile top section */
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 10px;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-info:hover {
+  background-color: #f1f5f9;
+}
+
+/* Circular Avatar */
+.profile-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* Email */
+.profile-email {
+  color: #374151;
+  font-size: 14px;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Arrow */
+.profile-arrow {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* =========================
+   PROFILE DROPDOWN
+========================= */
+
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 52px;
+
+  width: 190px;
+  background-color: white;
+
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+  padding: 8px 0;
+
+  display: none;
+  z-index: 1000;
+}
+
+/* Show dropdown when hovering */
+.profile-menu:hover .profile-dropdown {
+  display: block;
+}
+
+/* Dropdown items */
+.profile-dropdown div {
+  padding: 12px 16px;
+  color: #374151;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.profile-dropdown div:hover {
+  background-color: #f1f5f9;
+  color: #2563eb;
+}
+
+
+
+
+
+
+
+
+
+/* Course Detail Page */
+.course-detail-container {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main Course Card */
+.course-detail {
+  width: 100%;
+  max-width: 800px;
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Course Title */
+.course-detail h1 {
+  color: #2563eb;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+/* Course Description */
+.course-detail .description {
+  color: #555;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+/* Course Information */
+.course-info {
+  background-color: #f8fafc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.course-info p {
+  color: #374151;
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+.course-info strong {
+  color: #111827;
+}
+
+/* Register Button */
+.register-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 13px 25px;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Error */
+.error {
+  text-align: center;
+  color: #dc2626;
+  margin-top: 30px;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  margin-top: 50px;
+  color: #555;
+  font-size: 18px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .course-detail-container {
+    padding: 25px 15px;
+  }
+
+  .course-detail {
+    padding: 25px;
+  }
+
+  .course-detail h1 {
+    font-size: 26px;
+  }
+
+  .course-detail .description {
+    font-size: 15px;
+  }
+
+  .register-btn {
+    width: 100%;
+  }
+}
+
+
+
+
+/* Register Course Page */
+.register-container {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* Heading */
+.register-container h2 {
+  color: #1f2937;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+/* Form */
+.register-container form {
+  width: 100%;
+  max-width: 450px;
+  background-color: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Labels */
+.register-container label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 18px;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.register-container label:first-child {
+  margin-top: 0;
+}
+
+/* Inputs */
+.register-container input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Input focus */
+.register-container input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Disabled Email */
+.register-container input:disabled {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Register Button */
+.register-container button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 13px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-container button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Success Message */
+.success {
+  margin-top: 20px;
+  color: #16a34a;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Error Message */
+.error {
+  margin-top: 20px;
+  color: #dc2626;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .register-container {
+    padding: 25px 15px;
+  }
+
+  .register-container h2 {
+    font-size: 25px;
+  }
+
+  .register-container form {
+    padding: 25px;
+  }
+}
+
+
+
+
+
+/* =========================
+   CHANGE PASSWORD PAGE
+========================= */
+
+.change-password-container {
+  min-height: 100vh;
+  background-color: #f5f7fb;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 60px 20px;
+}
+
+/* Heading */
+.change-password-container h2 {
+  color: #1f2937;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.change-password-container form {
+  width: 100%;
+  max-width: 430px;
+
+  background-color: white;
+
+  padding: 35px;
+
+  border-radius: 12px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+.change-password-container label {
+  display: block;
+
+  color: #374151;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
+.change-password-container label:first-child {
+  margin-top: 0;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.change-password-container input {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 12px 14px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  transition: border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+
+/* Input Focus */
+
+.change-password-container input:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.change-password-container button {
+  width: 100%;
+
+  margin-top: 28px;
+
+  padding: 13px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 7px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background-color 0.3s ease,
+              transform 0.2s ease;
+}
+
+.change-password-container button:hover {
+  background-color: #1d4ed8;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   SUCCESS MESSAGE
+========================= */
+
+.change-password-container .success {
+  margin-top: 20px;
+
+  color: #16a34a;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+.change-password-container .error {
+  margin-top: 20px;
+
+  color: #dc2626;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  text-align: center;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .change-password-container {
+    padding: 40px 15px;
+  }
+
+  .change-password-container h2 {
+    font-size: 26px;
+  }
+
+  .change-password-container form {
+    padding: 25px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-container {
+  min-height: 100vh;
+  background: #f3f6fb;
+  padding: 50px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main profile card */
+.profile-card {
+  width: 100%;
+  max-width: 700px;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+   PROFILE TOP SECTION
+========================= */
+
+.profile-top {
+  background: #2563eb;
+  padding: 40px 30px;
+  text-align: center;
+  color: white;
+}
+
+/* Avatar */
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+
+  background: white;
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 36px;
+  font-weight: 700;
+
+  border: 4px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Name */
+.profile-top h2 {
+  margin: 5px 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Email */
+.profile-top p {
+  margin: 8px 0 0;
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+
+/* =========================
+   PROFILE BODY
+========================= */
+
+.profile-body {
+  padding: 35px;
+}
+
+.profile-body h3 {
+  margin: 0 0 20px;
+
+  color: #1f2937;
+
+  font-size: 20px;
+}
+
+
+/* =========================
+   INFORMATION CARDS
+========================= */
+
+.profile-info-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+.profile-info-box {
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 10px;
+
+  padding: 18px;
+}
+
+.profile-info-box .label {
+  display: block;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  margin-bottom: 7px;
+}
+
+.profile-info-box .value {
+  color: #111827;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  word-break: break-word;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.profile-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.profile-actions button {
+  flex: 1;
+
+  padding: 13px 20px;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+
+/* Change Password */
+.change-password-btn {
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+}
+
+.change-password-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   ERROR / LOADING
+========================= */
+
+.profile-container .error {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.profile-container .loading {
+  color: #6b7280;
+  font-size: 17px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .profile-container {
+    padding: 25px 15px;
+  }
+
+  .profile-top {
+    padding: 30px 20px;
+  }
+
+  .profile-avatar {
+    width: 75px;
+    height: 75px;
+    font-size: 30px;
+  }
+
+  .profile-top h2 {
+    font-size: 24px;
+  }
+
+  .profile-body {
+    padding: 25px 20px;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+}
+
+/* =========================
+   HOME NAVBAR
+========================= */
+
+.home-container nav {
+  height: 60px;
+  background-color: #ffffff;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 40px;
+  gap: 28px;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* Student Portal */
+
+.home-container nav span:first-child {
+  font-size: 21px;
+  font-weight: 700;
+  color: #2563eb;
+
+  margin-right: auto;
+}
+
+/* Navbar links */
+
+.home-container nav span:not(:first-child) {
+  color: #374151;
+  font-size: 15px;
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.home-container nav span:not(:first-child):hover {
+  color: #2563eb;
+}
+
+
+/* =========================
+   SMALL PROFILE
+========================= */
+
+.profile-menu {
+  position: relative;
+  cursor: pointer;
+}
+
+/* Profile content */
+
+.profile-info {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 4px 7px;
+
+  border-radius: 20px;
+
+  transition: background-color 0.2s ease;
+}
+
+.profile-info:hover {
+  background-color: #f3f4f6;
+}
+
+/* Small avatar */
+
+.profile-avatar {
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background-color: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* Email */
+
+.profile-email {
+  color: #374151;
+  font-size: 14px;
+
+  max-width: 130px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Arrow */
+
+.profile-arrow {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+
+/* =========================
+   PROFILE DROPDOWN
+========================= */
+
+.profile-dropdown {
+  position: absolute;
+
+  right: 0;
+  top: 42px;
+
+  width: 160px;
+
+  background-color: white;
+
+  border-radius: 8px;
+
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+
+  padding: 5px 0;
+
+  display: none;
+
+  z-index: 1000;
+}
+
+/* Show dropdown */
+
+.profile-menu:hover .profile-dropdown {
+  display: block;
+}
+
+/* Dropdown items */
+
+.profile-dropdown div {
+  padding: 9px 13px;
+
+  color: #374151;
+
+  font-size: 14px;
+
+  transition: background-color 0.2s ease;
+}
+
+.profile-dropdown div:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.home-container nav button {
+  background-color: #2563eb;
+  color: white;
+
+  border: none;
+
+  padding: 8px 18px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.home-container nav button:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .home-container nav {
+    height: auto;
+    min-height: 60px;
+
+    padding: 12px 20px;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+  }
+
+  .home-container nav span:first-child {
+    width: 100%;
+
+    margin-right: 0;
+
+    text-align: center;
+
+    font-size: 20px;
+  }
+
+  .home-container nav span:not(:first-child) {
+    font-size: 14px;
+  }
+
+  .profile-email {
+    max-width: 100px;
+  }
+
+  .profile-avatar {
+    width: 28px;
+    height: 28px;
+
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================
+   MY COURSES PAGE
+========================= */
+
+.my-courses-container {
+  min-height: 100vh;
+  background: #f3f6fb;
+  padding: 45px 20px;
+}
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.my-courses-container h1 {
+  text-align: center;
+  color: #1f2937;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+
+/* =========================
+   ACCORDION CONTAINER
+========================= */
+
+.accordion-container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* =========================
+   ACCORDION ITEM
+========================= */
+
+.accordion-item {
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* =========================
+   ACCORDION HEADER
+========================= */
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 22px;
+
+  cursor: pointer;
+
+  color: #1f2937;
+  font-size: 17px;
+
+  transition: background-color 0.2s ease;
+}
+
+.accordion-header:hover {
+  background: #f8fafc;
+}
+
+.accordion-header span {
+  color: #2563eb;
+  font-size: 13px;
+}
+
+/* =========================
+   ACCORDION BODY
+========================= */
+
+.accordion-body {
+  padding: 20px 22px;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* =========================
+   COURSE DATES
+========================= */
+
+.course-dates {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 12px 15px;
+  margin-bottom: 22px;
+}
+
+.course-dates p {
+  margin: 6px 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+/* =========================
+   VIDEO HEADING
+========================= */
+
+.accordion-body h4 {
+  color: #1f2937;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   VIDEO ITEM
+========================= */
+
+.video-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #f8fafc;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 8px;
+
+  padding: 13px 15px;
+
+  margin-bottom: 10px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.video-item:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+}
+
+/* Video title */
+
+.video-title {
+  margin: 0 0 5px;
+
+  color: #2563eb;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Added date */
+
+.video-added {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 12px;
+}
+
+/* Arrow */
+
+.video-arrow {
+  color: #2563eb;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* =========================
+   EXPIRED MESSAGE
+========================= */
+
+.expired-message {
+  background: #fff7ed;
+  color: #c2410c;
+
+  border: 1px solid #fed7aa;
+
+  padding: 13px 15px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+}
+
+/* =========================
+   NO COURSES
+========================= */
+
+.no-courses {
+  max-width: 500px;
+  margin: 50px auto;
+
+  background: white;
+
+  padding: 35px;
+
+  text-align: center;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.no-courses p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.no-courses button {
+  background: #2563eb;
+  color: white;
+
+  border: none;
+
+  padding: 11px 20px;
+
+  border-radius: 7px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+.no-courses button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+  text-align: center;
+  color: #6b7280;
+  font-size: 16px;
+  padding-top: 50px;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+  text-align: center;
+  color: #dc2626;
+  font-weight: 600;
+  padding-top: 50px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .my-courses-container {
+    padding: 30px 15px;
+  }
+
+  .my-courses-container h1 {
+    font-size: 25px;
+    margin-bottom: 25px;
+  }
+
+  .accordion-header {
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .accordion-body {
+    padding: 16px;
+  }
+
+  .course-dates {
+    padding: 10px 12px;
+  }
+
+  .course-dates p {
+    font-size: 13px;
+  }
+
+  .video-item {
+    padding: 12px;
+  }
+
+  .video-title {
+    font-size: 14px;
+  }
+
+  .video-added {
+    font-size: 11px;
+  }
+}
+
+
+
+
+/* =========================
+   VIDEO PLAYER PAGE
+========================= */
+
+.video-player-container {
+  min-height: 100vh;
+  background: #f3f6fb;
+  padding: 40px 20px;
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.video-player-container > button {
+  background: white;
+  color: #2563eb;
+
+  border: 1px solid #dbe3f0;
+  border-radius: 7px;
+
+  padding: 9px 16px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.video-player-container > button:hover {
+  background: #2563eb;
+  color: white;
+}
+
+/* =========================
+   VIDEO CONTENT
+========================= */
+
+.video-player-container > h1,
+.video-player-container > p,
+.video-frame {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+
+/* =========================
+   VIDEO TITLE
+========================= */
+
+.video-player-container h1 {
+  color: #1f2937;
+
+  font-size: 30px;
+
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.video-player-container > p {
+  color: #6b7280;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  margin-bottom: 20px;
+  
+}
+
+/* =========================
+   VIDEO FRAME
+========================= */
+
+.video-frame {
+  background: #000;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* YouTube iframe */
+
+.video-frame iframe {
+  display: block;
+
+  width: 100%;
+  height: 500px;
+
+  border: none;
+}
+
+/* =========================
+   ADDED DATE
+========================= */
+
+.video-player-container > p strong {
+  color: #374151;
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.video-player-container .error {
+  color: #dc2626;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+
+  padding: 12px 15px;
+
+  border-radius: 7px;
+
+  max-width: 900px;
+
+  margin: 25px auto;
+
+  font-size: 14px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .video-player-container {
+    padding: 25px 15px;
+  }
+
+  .video-player-container h1 {
+    font-size: 24px;
+    margin-top: 25px;
+  }
+
+  .video-player-container > p {
+    font-size: 14px;
+  }
+
+  .video-frame {
+    border-radius: 8px;
+  }
+
+  .video-frame iframe {
+    height: 300px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 450px) {
+
+  .video-player-container h1 {
+    font-size: 21px;
+  }
+
+  .video-frame iframe {
+    height: 230px;
+  }
+
+  .video-player-container > button {
+    padding: 8px 13px;
+    font-size: 13px;
+  }
+}
+
+/* =========================================
+   TOP NAVBAR
+========================================= */
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 15px 30px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1000;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+
+/* =========================================
+   NORMAL NAVBAR ITEMS
+========================================= */
+
+.top-nav > span {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.top-nav > span:hover {
+  color: #2563eb;
+}
+
+
+/* =========================================
+   ADMIN DROPDOWN CONTAINER
+========================================= */
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 0;
+}
+
+.nav-dropdown > span {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.nav-dropdown > span:hover {
+  color: #2563eb;
+}
+
+
+/* =========================================
+   DROPDOWN MENU
+========================================= */
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  min-width: 190px;
+
+  background-color: #ffffff;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+
+  padding: 6px 0;
+
+  z-index: 9999;
+}
+
+
+/* =========================================
+   DROPDOWN ITEMS
+========================================= */
+
+.dropdown-menu div {
+  padding: 11px 16px;
+
+  font-size: 14px;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+
+/* Hover effect */
+
+.dropdown-menu div:hover {
+  background-color: #f1f5f9;
+  color: #2563eb;
+}
+
+
+/* =========================================
+   PROFILE MENU
+========================================= */
+
+.profile-menu {
+  position: relative;
+  margin-left: auto;
+}
+
+
+/* =========================================
+   PROFILE INFO
+========================================= */
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+
+/* =========================================
+   PROFILE AVATAR
+========================================= */
+
+.profile-avatar {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  background-color: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+}
+
+
+/* =========================================
+   PROFILE DROPDOWN
+========================================= */
+
+.profile-dropdown {
+  right: 0;
+  left: auto;
+  top: calc(100% + 8px);
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.nav-right {
+  margin-left: auto;
+}
+
+.nav-right button {
+  padding: 8px 18px;
+
+  border: none;
+  border-radius: 6px;
+
+  background-color: #2563eb;
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+}
+
+.nav-right button:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* =========================================
+   HOME CONTENT
+========================================= */
+
+.home-content {
+  padding: 30px;
+}
+
+.home-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================
+   COURSE GRID
+========================================= */
+
+.course-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  );
+
+  gap: 25px;
+
+  padding: 20px;
+}
+
+
+/* =========================================
+   COURSE CARD
+========================================= */
+
+.course-card {
+  background-color: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  padding: 20px;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   COURSE BUTTON
+========================================= */
+
+.course-card button {
+  margin-top: 10px;
+
+  padding: 9px 16px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  cursor: pointer;
+}
+
+.course-card button:hover {
+  background-color: #1d4ed8;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+
+
+
+
+
+/* =====================================================
+   ADMIN COURSE LIST
+===================================================== */
+
+.admin-course-list {
+  padding: 30px 40px;
+  background-color: #f8fafc;
+  min-height: calc(100vh - 70px);
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.admin-course-list h1 {
+  margin: 0 0 20px 0;
+  font-size: 30px;
+  color: #1e293b;
+}
+
+
+/* =====================================================
+   ADD COURSE BUTTON
+===================================================== */
+
+.admin-course-list > button {
+  background-color: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 10px 18px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  margin-bottom: 25px;
+
+  transition: background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+.admin-course-list > button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.admin-course-list .error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+
+  padding: 12px 15px;
+
+  border-radius: 6px;
+
+  margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   TABLE CONTAINER EFFECT
+===================================================== */
+
+.admin-course-list table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background-color: white;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.admin-course-list thead {
+  background-color: #1e293b;
+  color: white;
+}
+
+.admin-course-list th {
+  padding: 14px 12px;
+
+  text-align: left;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   TABLE BODY
+===================================================== */
+
+.admin-course-list td {
+  padding: 13px 12px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  color: #334155;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   TABLE ROW
+===================================================== */
+
+.admin-course-list tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.admin-course-list tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+
+/* Remove border from last row */
+
+.admin-course-list tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.admin-course-list td:last-child {
+  white-space: nowrap;
+}
+
+
+/* Edit button */
+
+.admin-course-list td:last-child button:first-child {
+  background-color: #f59e0b;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 5px;
+
+  width: 36px;
+  height: 34px;
+
+  margin-right: 8px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition: background-color 0.2s ease;
+}
+
+.admin-course-list td:last-child button:first-child:hover {
+  background-color: #d97706;
+}
+
+
+/* Delete button */
+
+.admin-course-list td:last-child button:last-child {
+  background-color: #ef4444;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 5px;
+
+  width: 36px;
+  height: 34px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition: background-color 0.2s ease;
+}
+
+.admin-course-list td:last-child button:last-child:hover {
+  background-color: #dc2626;
+}
+
+
+/* =====================================================
+   NO COURSES MESSAGE
+===================================================== */
+
+.admin-course-list tbody:empty::after {
+  content: "No courses available";
+  display: block;
+  padding: 20px;
+  text-align: center;
+  color: #64748b;
+}
+
+
+/* =====================================================
+   RESPONSIVE TABLE
+===================================================== */
+
+@media (max-width: 900px) {
+
+  .admin-course-list {
+    padding: 20px;
+  }
+
+  .admin-course-list {
+    overflow-x: auto;
+  }
+
+  .admin-course-list table {
+    min-width: 850px;
+  }
+}
+
+
+/* =====================================================
+   COURSE FORM
+===================================================== */
+
+.course-form-container {
+  width: 600px;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 30px 35px;
+
+  background-color: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   FORM TITLE
+===================================================== */
+
+.course-form-container h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #1e293b;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.course-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.course-form-container label {
+  margin-bottom: 7px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #334155;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.course-form-container input {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+
+/* Input focus */
+
+.course-form-container input:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.course-form-container input[name="description"] {
+  min-height: 45px;
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.course-form-container button[type="submit"] {
+  width: 100%;
+
+  padding: 12px;
+
+  margin-top: 5px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 6px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+
+.course-form-container button[type="submit"]:hover {
+  background-color: #1d4ed8;
+
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.course-form-container .error {
+  margin-top: 18px;
+
+  padding: 11px 14px;
+
+  background-color: #fee2e2;
+
+  color: #b91c1c;
+
+  border-radius: 6px;
+
+  text-align: center;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .course-form-container {
+    width: 95%;
+    padding: 25px 20px;
+    margin: 25px auto;
+  }
+
+  .course-form-container h2 {
+    font-size: 22px;
+  }
+}
+
+
+
+/* =====================================================
+   ADMIN VIDEO LIST
+===================================================== */
+
+.admin-video-list {
+  padding: 30px 40px;
+  background-color: #f8fafc;
+  min-height: calc(100vh - 70px);
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+
+.admin-video-list h1 {
+  margin: 0 0 20px 0;
+  font-size: 30px;
+  color: #1e293b;
+}
+
+
+/* =====================================================
+   FILTER SECTION
+===================================================== */
+
+.admin-video-list label {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #334155;
+}
+
+
+/* Course dropdown */
+
+.admin-video-list select {
+  width: 280px;
+
+  padding: 10px 12px;
+
+  margin-bottom: 20px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+  background-color: white;
+
+  font-size: 14px;
+
+  color: #334155;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+
+/* Dropdown focus */
+
+.admin-video-list select:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =====================================================
+   ADD VIDEO BUTTON
+===================================================== */
+
+.admin-video-list > button {
+  display: block;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 6px;
+
+  padding: 10px 18px;
+
+  font-size: 15px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  margin-bottom: 25px;
+
+  transition: background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+
+.admin-video-list > button:hover {
+  background-color: #1d4ed8;
+
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.admin-video-list .error {
+  background-color: #fee2e2;
+
+  color: #b91c1c;
+
+  padding: 12px 15px;
+
+  border-radius: 6px;
+
+  margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.admin-video-list table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background-color: white;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.admin-video-list thead {
+  background-color: #1e293b;
+
+  color: white;
+}
+
+
+.admin-video-list th {
+  padding: 14px 12px;
+
+  text-align: left;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   TABLE BODY
+===================================================== */
+
+.admin-video-list td {
+  padding: 13px 12px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  color: #334155;
+
+  font-size: 14px;
+
+  vertical-align: middle;
+}
+
+
+/* Row hover */
+
+.admin-video-list tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+
+.admin-video-list tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+
+/* Remove bottom border from last row */
+
+.admin-video-list tbody tr:last-child td {
+  border-bottom: none;
+}
+
+
+/* =====================================================
+   YOUTUBE LINK
+===================================================== */
+
+.admin-video-list td a {
+  color: #2563eb;
+
+  text-decoration: none;
+
+  font-weight: 500;
+}
+
+
+.admin-video-list td a:hover {
+  text-decoration: underline;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.admin-video-list td:last-child {
+  white-space: nowrap;
+}
+
+
+/* Edit button */
+
+.admin-video-list td:last-child button:first-child {
+  background-color: #f59e0b;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 5px;
+
+  width: 36px;
+
+  height: 34px;
+
+  margin-right: 8px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition: background-color 0.2s ease;
+}
+
+
+.admin-video-list td:last-child button:first-child:hover {
+  background-color: #d97706;
+}
+
+
+/* Delete button */
+
+.admin-video-list td:last-child button:last-child {
+  background-color: #ef4444;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 5px;
+
+  width: 36px;
+
+  height: 34px;
+
+  cursor: pointer;
+
+  font-size: 16px;
+
+  transition: background-color 0.2s ease;
+}
+
+
+.admin-video-list td:last-child button:last-child:hover {
+  background-color: #dc2626;
+}
+
+
+/* =====================================================
+   RESPONSIVE TABLE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  .admin-video-list {
+    padding: 25px 20px;
+    overflow-x: auto;
+  }
+
+  .admin-video-list table {
+    min-width: 1000px;
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .admin-video-list {
+    padding: 20px 15px;
+  }
+
+  .admin-video-list h1 {
+    font-size: 24px;
+  }
+
+  .admin-video-list select {
+    width: 100%;
+  }
+
+}
+
+/* =====================================================
+   VIDEO FORM
+===================================================== */
+
+.video-form-container {
+  width: 600px;
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 30px 35px;
+
+  background-color: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+
+  box-sizing: border-box;
+}
+
+
+/* =====================================================
+   FORM TITLE
+===================================================== */
+
+.video-form-container h2 {
+  margin: 0 0 25px 0;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #1e293b;
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.video-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.video-form-container label {
+  margin-bottom: 7px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #334155;
+}
+
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.video-form-container input {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+.video-form-container select {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+  background-color: white;
+
+  color: #334155;
+
+  font-size: 15px;
+
+  outline: none;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+
+/* =====================================================
+   INPUT + SELECT FOCUS
+===================================================== */
+
+.video-form-container input:focus,
+.video-form-container select:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =====================================================
+   TEXTAREA
+===================================================== */
+
+.video-form-container textarea {
+  width: 100%;
+
+  min-height: 100px;
+
+  padding: 11px 12px;
+
+  margin-bottom: 20px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+  font-size: 15px;
+
+  font-family: inherit;
+
+  resize: vertical;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+
+/* Textarea focus */
+
+.video-form-container textarea:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.video-form-container button[type="submit"] {
+  width: 100%;
+
+  padding: 12px;
+
+  margin-top: 5px;
+
+  background-color: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 6px;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease,
+              transform 0.2s ease;
+}
+
+
+/* Button hover */
+
+.video-form-container button[type="submit"]:hover {
+  background-color: #1d4ed8;
+
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   ERROR MESSAGE
+===================================================== */
+
+.video-form-container .error {
+  margin-top: 18px;
+
+  padding: 11px 14px;
+
+  background-color: #fee2e2;
+
+  color: #b91c1c;
+
+  border-radius: 6px;
+
+  text-align: center;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   MOBILE RESPONSIVE
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .video-form-container {
+    width: 95%;
+
+    padding: 25px 20px;
+
+    margin: 25px auto;
+  }
+
+  .video-form-container h2 {
+    font-size: 22px;
+  }
+
+}
+
+
+
+/* ================================
+   ADMIN STUDENT LIST
+================================ */
+
+.admin-student-list {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+}
+
+/* Heading */
+.admin-student-list h1 {
+  margin: 0 0 25px 0;
+  text-align: center;
+  font-size: 28px;
+  color: #1e293b;
+}
+
+/* Filter section */
+.admin-student-list label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+}
+
+.admin-student-list select {
+  width: 280px;
+  max-width: 100%;
+  padding: 11px 12px;
+  margin-bottom: 25px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+
+  background-color: #ffffff;
+  color: #334155;
+
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+.admin-student-list select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Error message */
+.admin-student-list .error {
+  margin: 10px 0 20px;
+  padding: 12px 15px;
+
+  background-color: #fee2e2;
+  color: #b91c1c;
+
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Table wrapper effect */
+.admin-student-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Table heading */
+.admin-student-list th {
+  padding: 14px 12px;
+  background-color: #1e293b;
+  color: #ffffff;
+
+  text-align: left;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Table cells */
+.admin-student-list td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #e2e8f0;
+
+  color: #334155;
+  font-size: 14px;
+}
+
+/* Alternate rows */
+.admin-student-list tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+/* Hover effect */
+.admin-student-list tbody tr:hover {
+  background-color: #eff6ff;
+}
+
+/* Email column */
+.admin-student-list td:nth-child(3) {
+  word-break: break-word;
+}
+
+/* Mobile number */
+.admin-student-list td:nth-child(5) {
+  white-space: nowrap;
+}
+
+/* ================================
+   RESPONSIVE TABLE
+================================ */
+
+@media (max-width: 768px) {
+  .admin-student-list {
+    width: 95%;
+    padding: 20px;
+    margin: 25px auto;
+  }
+
+  .admin-student-list h1 {
+    font-size: 24px;
+  }
+
+  .admin-student-list select {
+    width: 100%;
+  }
+
+  .admin-student-list {
+    overflow-x: auto;
+  }
+
+  .admin-student-list table {
+    min-width: 750px;
+  }
+}
