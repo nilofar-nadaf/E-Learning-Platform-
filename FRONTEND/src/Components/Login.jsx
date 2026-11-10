@@ -18,7 +18,7 @@ function Login() {
     setError("");
 
     try {
-      const response = await axiosInstance.post("http://localhost:5000/user/login",{email: email,password: password,});
+      const response = await axiosInstance.post("/user/login",{email: email,password: password,});
 
       console.log(response.data);
 
