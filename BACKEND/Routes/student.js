@@ -1,7 +1,8 @@
 const express = require('express');
 const pool = require('../Database/pool');
 const result = require('../utils/result');
-const { auth, requireAdmin } = require('../utils/auth');
+const { auth } = require('../utils/auth');
+const { NOT_EXPIRED, courseFromBody } = require('../utils/courseGuard');
 
 const router = express.Router();
 const cryptojs = require('crypto-js');   // add this import at the top
@@ -29,7 +30,7 @@ router.put('/change-password', auth, (req, res) => {
   });
 });
 // STUDENT — register (logged-in student enrolls into a course)
-router.post('/register-to-course', auth, (req, res) => {
+router.post('/register-to-course', auth, courseFromBody, (req, res) => {
   const { courseId, name, mobileNo } = req.body;
   const email = req.user.email;   // comes from the token, NOT the request body — can't be faked
 
@@ -50,6 +51,7 @@ router.get('/my-courses', auth, (req, res) => {
     FROM STUDENTS S
     JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
     WHERE S.EMAIL = ?
+      AND ${NOT_EXPIRED}
   `;
 
   pool.query(sql, [email], (error, data) => {
@@ -68,8 +70,8 @@ router.get('/my-course-with-videos', auth, (req, res) => {
     FROM STUDENTS S
     JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
     LEFT JOIN VIDEOS V ON V.COURSE_ID = C.COURSE_ID
-      AND CURDATE() <= DATE_ADD(C.END_DATE, INTERVAL C.VIDEO_EXPIRE_DAYS DAY)
     WHERE S.EMAIL = ?
+      AND ${NOT_EXPIRED}
   `;
 
   pool.query(sql, [email], (error, data) => {
@@ -90,7 +92,7 @@ router.get('/video/:videoId', auth, (req, res) => {
     JOIN VIDEOS V ON V.COURSE_ID = C.COURSE_ID
     WHERE S.EMAIL = ?
       AND V.VIDEO_ID = ?
-      AND CURDATE() <= DATE_ADD(C.END_DATE, INTERVAL C.VIDEO_EXPIRE_DAYS DAY)
+      AND ${NOT_EXPIRED}
   `;
 
   pool.query(sql, [email, videoId], (error, data) => {

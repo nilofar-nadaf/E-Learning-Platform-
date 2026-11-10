@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../Database/pool');
 const result = require('../utils/result');
 const { auth, requireAdmin } = require('../utils/auth');
+const { NOT_EXPIRED, courseFromParams } = require('../utils/courseGuard');
 
 const router = express.Router();
 
@@ -15,9 +16,9 @@ router.get('/all-active-courses', (req, res) => {
   });
 });
 
-// ADMIN ONLY — see all courses regardless of date
+// ADMIN ONLY — see all courses that are not expired
 router.get('/all-courses', auth, requireAdmin, (req, res) => {
-  const sql = `SELECT * FROM COURSES`;
+  const sql = `SELECT C.* FROM COURSES C WHERE ${NOT_EXPIRED}`;
 
   pool.query(sql, (error, data) => {
     if (error) return res.send(result.createResult(error));
@@ -39,7 +40,7 @@ router.post('/add', auth, requireAdmin, (req, res) => {
 });
 
 // ADMIN ONLY — update a course
-router.put('/update/:courseId', auth, requireAdmin, (req, res) => {
+router.put('/update/:courseId', auth, requireAdmin, courseFromParams, (req, res) => {
   const { courseId } = req.params;
   const { courseName, description, fees, startDate, endDate, videoExpireDays } = req.body;
 
@@ -53,7 +54,7 @@ router.put('/update/:courseId', auth, requireAdmin, (req, res) => {
 });
 
 // ADMIN ONLY — delete a course
-router.delete('/delete/:courseId', auth, requireAdmin, (req, res) => {
+router.delete('/delete/:courseId', auth, requireAdmin, courseFromParams, (req, res) => {
   const { courseId } = req.params;
 
   const sql = `DELETE FROM COURSES WHERE COURSE_ID=?`;

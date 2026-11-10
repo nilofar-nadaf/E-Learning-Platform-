@@ -1,143 +1,97 @@
 import { useState } from "react";
-import axios from "axios";
 import axiosInstance from "../api/axiosInstance";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
-    const [message, setMessage] = useState("");
-    const [error, setError] = useState("");
+  const handleLogin = async (event) => {
+    event.preventDefault();
 
-    const handleLogin = async (event) => {
+    setMessage("");
+    setError("");
 
-        event.preventDefault();
+    try {
+      const response = await axiosInstance.post("http://localhost:5000/user/login",{email: email,password: password,});
 
-        setMessage("");
-        setError("");
+      console.log(response.data);
 
-        try {
+      if (response.data.status === "success") {
+        const userData = response.data.data;
 
-            const response = await axiosInstance.post(
-                "http://localhost:5000/user/login",
-                {
-                    email: email,
-                    password: password
-                }
-            );
+        localStorage.setItem("token", userData.token);
 
-            console.log(response.data);
+        localStorage.setItem("email", userData.email);
 
-            if (response.data.status === "success") {
+        localStorage.setItem("role", userData.role);
 
-    const userData = response.data.data;
+        if (response.data.status === "success") {
+          const userData = response.data.data;
 
-    localStorage.setItem(
-        "token",
-        userData.token
-    );
+          localStorage.setItem("token", userData.token);
+          localStorage.setItem("email", userData.email);
+          localStorage.setItem("role", userData.role);
+          localStorage.setItem("isDefaultPassword", userData.isDefaultPassword); // ⬅ new
 
-    localStorage.setItem(
-        "email",
-        userData.email
-    );
-
-    localStorage.setItem(
-        "role",
-        userData.role
-    );
-
-    if (userData.role === "STUDENT") {
-
-        navigate("/");
-
-    } else if (userData.role === "ADMIN") {
-
-        navigate("/");
-
-    }
-
-} else {
-
-                setError(response.data.error);
-
-            }
-
-        } catch (error) {
-
-            console.log(error);
-
-            setError("Unable to connect to server");
-
+          navigate("/");
         }
-    };
+        if (userData.role === "STUDENT") {
+          navigate("/");
+        } else if (userData.role === "ADMIN") {
+          navigate("/");
+        }
+      } else {
+        setError(response.data.error);
+      }
+    } catch (error) {
+      console.log(error);
 
-    return (
+      setError("Unable to connect to server");
+    }
+  };
 
-        <div className="login-container">
+  return (
+    <div className="login-container">
+      <div className="login-box">
+        <h1>Student Portal</h1>
 
-            <div className="login-box">
+        <h2>Login</h2>
 
-                <h1>Student Portal</h1>
+        <form onSubmit={handleLogin}>
+          <label>Email</label>
 
-                <h2>Login</h2>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            required
+          />
 
-                <form onSubmit={handleLogin}>
+          <label>Password</label>
 
-                    <label>
-                        Email
-                    </label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            required
+          />
 
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(event) =>
-                            setEmail(event.target.value)
-                        }
-                        required
-                    />
+          <button type="submit">Login</button>
+        </form>
 
-                    <label>
-                        Password
-                    </label>
+        {message && <p className="success">{message}</p>}
 
-                    <input
-                        type="password"
-                        placeholder="Enter your password"
-                        value={password}
-                        onChange={(event) =>
-                            setPassword(event.target.value)
-                        }
-                        required
-                    />
-
-                    <button type="submit">
-                        Login
-                    </button>
-
-                </form>
-
-                {message && (
-                    <p className="success">
-                        {message}
-                    </p>
-                )}
-
-                {error && (
-                    <p className="error">
-                        {error}
-                    </p>
-                )}
-
-            </div>
-
-        </div>
-
-    );
+        {error && <p className="error">{error}</p>}
+      </div>
+    </div>
+  );
 }
 export default Login;

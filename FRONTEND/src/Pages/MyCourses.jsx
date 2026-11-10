@@ -148,8 +148,7 @@ function MyCourses() {
 
                   {course.videos.length === 0 ? (
                     <div className="expired-message">
-                      Access to videos has expired
-                      for this course.
+                      No videos have been added to this course yet.
                     </div>
                   ) : (
                     <div className="video-list">

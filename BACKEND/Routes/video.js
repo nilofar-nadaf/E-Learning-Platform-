@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../Database/pool');
 const result = require('../utils/result');
 const { auth, requireAdmin } = require('../utils/auth');
+const { NOT_EXPIRED, courseFromBody, videoNotExpired } = require('../utils/courseGuard');
 
 const router = express.Router();
 
@@ -9,11 +10,11 @@ const router = express.Router();
 router.get('/all-videos', auth, requireAdmin, (req, res) => {
   const { courseId } = req.query;
 
-  let sql = `SELECT * FROM VIDEOS`;
+  let sql = `SELECT V.* FROM VIDEOS V JOIN COURSES C ON V.COURSE_ID = C.COURSE_ID WHERE ${NOT_EXPIRED}`;
   const params = [];
 
   if (courseId) {
-    sql += ` WHERE COURSE_ID = ?`;
+    sql += ` AND V.COURSE_ID = ?`;
     params.push(courseId);
   }
 
@@ -24,7 +25,7 @@ router.get('/all-videos', auth, requireAdmin, (req, res) => {
 });
 
 // ADMIN ONLY — add a video to a course
-router.post('/add', auth, requireAdmin, (req, res) => {
+router.post('/add', auth, requireAdmin, courseFromBody, (req, res) => {
   const { courseId, title, youtubeURL, description } = req.body;
 
   const sql = `INSERT INTO VIDEOS (COURSE_ID, TITLE, YOUTUBE_URL, DESCRIPTION, ADDED_AT) 
@@ -37,7 +38,7 @@ router.post('/add', auth, requireAdmin, (req, res) => {
 });
 
 // ADMIN ONLY — update a video
-router.put('/update/:videoId', auth, requireAdmin, (req, res) => {
+router.put('/update/:videoId', auth, requireAdmin, videoNotExpired, courseFromBody, (req, res) => {
   const { videoId } = req.params;
   const { courseId, title, youtubeURL, description } = req.body;
 
@@ -50,7 +51,7 @@ router.put('/update/:videoId', auth, requireAdmin, (req, res) => {
 });
 
 // ADMIN ONLY — delete a video
-router.delete('/delete/:videoId', auth, requireAdmin, (req, res) => {
+router.delete('/delete/:videoId', auth, requireAdmin, videoNotExpired, (req, res) => {
   const { videoId } = req.params;
 
   const sql = `DELETE FROM VIDEOS WHERE VIDEO_ID=?`;

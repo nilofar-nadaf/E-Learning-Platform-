@@ -20,9 +20,7 @@ function VideoList() {
 
   const fetchVideos = async (courseId) => {
     try {
-      const url = courseId
-        ? `/video/all-videos?courseId=${courseId}`
-        : "/video/all-videos";
+      const url = courseId ? `/video/all-videos?courseId=${courseId}`: "/video/all-videos";
 
       const response = await axiosInstance.get(url);
       if (response.data.status === "success") {

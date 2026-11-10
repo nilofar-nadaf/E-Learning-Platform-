@@ -16,9 +16,7 @@ function StudentList() {
 
   const fetchStudents = async (courseId) => {
     try {
-      const url = courseId
-        ? `/admin/enrolled-students?courseId=${courseId}`
-        : "/admin/enrolled-students";
+      const url = courseId ? `/admin/enrolled-students?courseId=${courseId}`: "/admin/enrolled-students";
 
       const response = await axiosInstance.get(url);
       if (response.data.status === "success") {

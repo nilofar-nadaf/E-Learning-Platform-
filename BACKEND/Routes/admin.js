@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../Database/pool');
 const result = require('../utils/result');
 const { auth, requireAdmin } = require('../utils/auth');
+const { NOT_EXPIRED } = require('../utils/courseGuard');
 
 const router = express.Router();
 
@@ -12,12 +13,13 @@ router.get('/enrolled-students', auth, requireAdmin, (req, res) => {
   let sql = `
     SELECT S.REG_NO, S.NAME, S.EMAIL, S.MOBILE_NO, C.COURSE_NAME
     FROM STUDENTS S
-    LEFT JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
+    JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
+    WHERE ${NOT_EXPIRED}
   `;
   const params = [];
 
   if (courseId) {
-    sql += ` WHERE S.COURSE_ID = ?`;
+    sql += ` AND S.COURSE_ID = ?`;
     params.push(courseId);
   }
 
