@@ -32,13 +32,45 @@ router.put('/change-password', auth, (req, res) => {
 // STUDENT — register (logged-in student enrolls into a course)
 router.post('/register-to-course', auth, courseFromBody, (req, res) => {
   const { courseId, name, mobileNo } = req.body;
-  const email = req.user.email;   // comes from the token, NOT the request body — can't be faked
+  const email = req.user.email;
 
-  const sql = `INSERT INTO STUDENTS (NAME, EMAIL, COURSE_ID, MOBILE_NO) VALUES (?, ?, ?, ?)`;
+  // First, check whether the student is already registered
+  const checkSql = `
+    SELECT REG_NO
+    FROM STUDENTS
+    WHERE EMAIL = ? AND COURSE_ID = ?
+    LIMIT 1
+  `;
 
-  pool.query(sql, [name, email, courseId, mobileNo], (error, data) => {
-    if (error) return res.send(result.createResult(error));
-    res.send(result.createResult(null, { message: "Registered successfully" }));
+  pool.query(checkSql, [email, courseId], (error, data) => {
+    if (error) {
+      return res.send(result.createResult(error));
+    }
+
+    // If registration already exists, stop here
+    if (data.length > 0) {
+      return res.send(
+        result.createResult("You are already registered for this course")
+      );
+    }
+
+    // Otherwise, insert the new registration
+    const insertSql = `
+      INSERT INTO STUDENTS (NAME, EMAIL, COURSE_ID, MOBILE_NO)
+      VALUES (?, ?, ?, ?)
+    `;
+
+    pool.query(insertSql, [name, email, courseId, mobileNo], (error, data) => {
+      if (error) {
+        return res.send(result.createResult(error));
+      }
+
+      res.send(
+        result.createResult(null, {
+          message: "Registered successfully"
+        })
+      );
+    });
   });
 });
 
@@ -47,12 +79,20 @@ router.get('/my-courses', auth, (req, res) => {
   const email = req.user.email;
 
   const sql = `
-    SELECT C.COURSE_ID, C.COURSE_NAME, C.DESCRIPTION, C.START_DATE, C.END_DATE
-    FROM STUDENTS S
-    JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
-    WHERE S.EMAIL = ?
-      AND ${NOT_EXPIRED}
-  `;
+  SELECT
+    C.COURSE_ID,
+    C.COURSE_NAME,
+    C.DESCRIPTION,
+    C.START_DATE,
+    C.END_DATE
+  FROM (
+    SELECT DISTINCT COURSE_ID
+    FROM STUDENTS
+    WHERE EMAIL = ?
+  ) S
+  JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
+  WHERE ${NOT_EXPIRED}
+`;
 
   pool.query(sql, [email], (error, data) => {
     if (error) return res.send(result.createResult(error));
@@ -67,11 +107,14 @@ router.get('/my-course-with-videos', auth, (req, res) => {
   const sql = `
     SELECT S.COURSE_ID, C.COURSE_NAME, C.START_DATE, C.END_DATE, C.VIDEO_EXPIRE_DAYS,
            V.VIDEO_ID, V.TITLE, V.YOUTUBE_URL, V.DESCRIPTION, V.ADDED_AT
-    FROM STUDENTS S
-    JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
-    LEFT JOIN VIDEOS V ON V.COURSE_ID = C.COURSE_ID
-    WHERE S.EMAIL = ?
-      AND ${NOT_EXPIRED}
+    FROM (
+    SELECT DISTINCT COURSE_ID
+    FROM STUDENTS
+    WHERE EMAIL = ?
+) S
+JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
+LEFT JOIN VIDEOS V ON V.COURSE_ID = C.COURSE_ID
+WHERE ${NOT_EXPIRED}
   `;
 
   pool.query(sql, [email], (error, data) => {
@@ -86,14 +129,23 @@ router.get('/video/:videoId', auth, (req, res) => {
   const email = req.user.email;
 
   const sql = `
-    SELECT V.VIDEO_ID, V.TITLE, V.DESCRIPTION, V.YOUTUBE_URL, V.ADDED_AT
-    FROM STUDENTS S
-    JOIN COURSES C ON S.COURSE_ID = C.COURSE_ID
-    JOIN VIDEOS V ON V.COURSE_ID = C.COURSE_ID
-    WHERE S.EMAIL = ?
-      AND V.VIDEO_ID = ?
-      AND ${NOT_EXPIRED}
-  `;
+  SELECT
+    V.VIDEO_ID,
+    V.TITLE,
+    V.DESCRIPTION,
+    V.YOUTUBE_URL,
+    V.ADDED_AT
+  FROM COURSES C
+  JOIN VIDEOS V ON V.COURSE_ID = C.COURSE_ID
+  WHERE V.VIDEO_ID = ?
+    AND EXISTS (
+      SELECT 1
+      FROM STUDENTS S
+      WHERE S.EMAIL = ?
+        AND S.COURSE_ID = C.COURSE_ID
+    )
+    AND ${NOT_EXPIRED}
+`;
 
   pool.query(sql, [email, videoId], (error, data) => {
     if (error) return res.send(result.createResult(error));
